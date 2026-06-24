@@ -1,23 +1,20 @@
 {
-  "name": "iptracker",
-  "version": "1.0.0",
-  "description": "testing ip address",
-  "main": "server.js",
+  "name": "ip-tracker",
+  "version": "2.0.0",
+  "description": "See the geolocation metadata attached to your public IP address.",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrewdc92/ip-tracker.git"
+    "url": "git+https://github.com/acordivari/ip-tracker.git"
   },
-  "author": "andrew cordivari",
+  "author": "Andrew Cordivari",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/andrewdc92/ip-tracker/issues"
-  },
-  "homepage": "https://github.com/andrewdc92/ip-tracker#readme",
-  "dependencies": {
-    "express": "^4.14.0"
+  "devDependencies": {
+    "vite": "^6.0.0"
   }
 }

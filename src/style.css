@@ -1,0 +1,167 @@
+:root {
+  --accent: #f0ad4e;
+  --accent-dark: #ec971f;
+  --blue: #3081ff;
+  --ink: #2b2b2b;
+  --surface: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  background: linear-gradient(160deg, var(--accent), var(--accent-dark));
+}
+
+.container {
+  width: 100%;
+  max-width: 640px;
+  padding: 2.5rem 1.25rem 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+}
+
+.subtitle {
+  margin: 0.25rem 0 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.card {
+  width: 100%;
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.status {
+  margin: 0;
+  color: #666;
+}
+
+.status.error {
+  color: #b3261e;
+}
+
+.ip {
+  margin: 0;
+  font-size: clamp(1.4rem, 4.5vw, 2rem);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  word-break: break-all;
+}
+
+.coords {
+  margin: 0.25rem 0 1.25rem;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.facts {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.fact {
+  background: #faf6ef;
+  border: 1px solid #f0e6d6;
+  border-radius: 10px;
+  padding: 0.75rem;
+}
+
+.fact dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #9a8a6f;
+}
+
+.fact dd {
+  margin: 0.25rem 0 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.7rem 1.6rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.08);
+}
+
+dialog#info-modal {
+  max-width: 640px;
+  width: calc(100% - 2rem);
+  border: none;
+  border-radius: 16px;
+  padding: 0;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+dialog#info-modal::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+}
+
+.modal-header {
+  border-bottom: 1px solid #eee;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.modal-body p {
+  line-height: 1.6;
+}
+
+.modal-body a {
+  color: var(--accent-dark);
+}
+
+.modal-footer {
+  border-top: 1px solid #eee;
+  text-align: right;
+}
+
+footer {
+  margin-top: auto;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.85rem;
+}
+
+footer a {
+  color: #fff;
+}

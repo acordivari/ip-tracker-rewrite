@@ -1,16 +1,32 @@
-## An Ip tracker that provides your Geolocation! 
+# IP Tracker
 
-Installation and Setup-
+A tiny single-page app that shows the geolocation metadata attached to your
+public IP address — city, region, country, coordinates, and ISP — alongside a
+short, educational write-up on how IP addresses are used to track you online.
 
-> Copy the Git Clone URL (CMD + C)
-> Cd into desired directory in your terminal 
-> Git clone (CMD + V) to paste the URL, run the command
-> The application runs without a server since the API serve as the backend.
+Originally written in 2016 with AngularJS 1.x and Bower, it has been rebuilt
+from scratch as a dependency-free **vanilla JavaScript** app bundled with
+[Vite](https://vitejs.dev/).
 
-Currently hosted at https://andrewdc92.github.io/ip-tracker/
+## How it works
 
-Just click the link and it will render your approximate location. Mobile results will vary if you're connected to 3g/4g/LTE.
+There is no browser API that returns your *public* IP address. The app makes a
+single HTTPS request to [ipwho.is](https://ipwho.is) — a free, keyless
+geolocation service that echoes back the IP it sees plus its metadata. If that
+lookup fails, it falls back to [ipify](https://www.ipify.org) for the IP alone.
+User-controlled values are HTML-escaped before rendering.
 
-I could have utilized the built-in HTML geolocation feature instead of the API, but that requires the user to accept permission. I wanted this to serve as a simple educational resource for showing the metadata that is attached an IP address. 
+## Develop
 
-The optional challenge here was to create a custom directive, so I went an unconventional route to pursue the challenge. I ran the majority of the logic through a custom directive instead of a controller to run the API request. 
+```bash
+npm install
+npm run dev      # start the Vite dev server
+npm run build    # production build into dist/
+npm run preview  # serve the production build locally
+```
+
+## Deploy
+
+`npm run build` produces a fully static `dist/` directory that can be hosted
+anywhere, including GitHub Pages. The Vite `base` is set to `./` so the build
+works whether it is served from a domain root or a project subpath.

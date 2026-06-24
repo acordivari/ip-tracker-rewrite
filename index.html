@@ -1,70 +1,79 @@
 <!DOCTYPE html>
-<html ng-app="ipApp">
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>I C UR IP </title>
-
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/main.css">
-
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
-    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.1.3.js"></script>
-    <script type='text/javascript' src='app.js'></script>
-    <script type='text/javascript' src='scripts/directives/ip.js'></script>
-    <script type ='text/javascript' src='controllers/ipController.js'></script>
-
-    <!-- <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script> -->
-
-    <script type="text/javascript" src="services/ipservice.js"></script>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="See the geolocation metadata attached to your public IP address."
+    />
+    <title>I C UR IP</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>" />
   </head>
   <body>
+    <main class="container">
+      <header>
+        <h1>Your Current Geolocation</h1>
+        <p class="subtitle">The metadata attached to your public IP address</p>
+      </header>
 
-    <div class="container" ng-controller="ipController as ipController">
-      <center><h1>Your Current Geolocation</h1></center>
-      <div class="row">
-        <ip-address ip="{{ip}}"></ip-address>
-        <!-- hypenated here -->
-      </div>
+      <section id="card" class="card" aria-live="polite">
+        <p class="status">Looking up your IP address…</p>
+      </section>
 
-      <div ng-controller="ModalDemoCtrl as $ctrl">
-        <script type="text/ng-template" id="myModalContent.html">
-          <div class="modal-header">
-              <h3 class="modal-title" id="modal-title">Your IP address can be used for...</h3>
-          </div>
-          <div class="modal-body" id="modal-body">
-              <p> This is information about your online identity. Luckily, personal info like your name and "exact" location
-                  cannot be determined through your IP alone. However, most websites log your IP when you visit it them as a way
-                  to protect the online community from abusive users. If an individual commits a cybercrime, the authorities can subpoena
-                  the individual's internet service provider for specific info after using a resource like the <a href = "https://www.arin.net/resources/tools/"> ARIN database. </a>
-                  In addition to your ISP, most companies like Google and Facebook also store your IP address. There are multiple methods
-                  that companies utilize to track your behavior, habits, and search terminology, including cookies (less popular
-                  now due to cookie-blocking), <a href="https://en.wikipedia.org/wiki/Web_beacon"> web beacons,</a>  embedded services like
-                  Google Analytics, and <a href="http://randomwalker.info/publications/OpenWPM_1_million_site_tracking_measurement.pdf">
-                  fingerprint scripts. </a>  </p>
+      <button id="learn-more" type="button" class="btn-primary">
+        Learn More…
+      </button>
 
-              <p> If tracking becomes frustrating or bothersome, there are some easily-accessible tools to skirt around the issue. Utilizing <a href = "https://www.bestvpn.com/blog/38176/vpns-for-beginners/"> VPNs</a> (virtual private networks)
-                 allow the user to obfuscate their IP address by routing it through different servers or host computers. This is a common workaround for
-                individuals who want to access familiar elements of the internet in different countries, like watching Netflix in countries that don't have it available. If you're interested in discussing
-                more about the Internet, tech, or anonymity, you can reach me at <a href="mailto:andrew.cordivari@gmail.com"> andrew.cordivari@gmail.com </a>
+      <dialog id="info-modal">
+        <div class="modal-header">
+          <h2>Your IP address can be used for…</h2>
+        </div>
+        <div class="modal-body">
+          <p>
+            This is information about your online identity. Luckily, personal
+            info like your name and "exact" location cannot be determined
+            through your IP alone. However, most websites log your IP when you
+            visit them as a way to protect the online community from abusive
+            users. If an individual commits a cybercrime, the authorities can
+            subpoena that individual's internet service provider for specific
+            info after using a resource like the
+            <a href="https://www.arin.net/resources/tools/" target="_blank" rel="noopener">ARIN database</a>.
+            In addition to your ISP, most companies like Google and Facebook
+            also store your IP address. There are multiple methods that
+            companies use to track your behavior, habits, and search
+            terminology, including cookies (less popular now due to
+            cookie-blocking),
+            <a href="https://en.wikipedia.org/wiki/Web_beacon" target="_blank" rel="noopener">web beacons</a>,
+            embedded services like Google Analytics, and
+            <a href="https://www.cs.princeton.edu/~arvindn/publications/OpenWPM_1_million_site_tracking_measurement.pdf" target="_blank" rel="noopener">fingerprint scripts</a>.
+          </p>
+          <p>
+            If tracking becomes frustrating or bothersome, there are some
+            easily-accessible tools to skirt around the issue. A
+            <abbr title="virtual private network">VPN</abbr> lets you obfuscate
+            your IP address by routing traffic through different servers. This
+            is a common workaround for people who want to access familiar parts
+            of the internet from different countries, like watching a streaming
+            catalog that isn't available locally. If you're interested in
+            discussing more about the internet, tech, or anonymity, you can
+            reach me at
+            <a href="mailto:andrew.cordivari@gmail.com">andrew.cordivari@gmail.com</a>.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button id="modal-close" type="button" class="btn-primary">OK</button>
+        </div>
+      </dialog>
 
-          </div>
-          <div class="modal-footer">
-              <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
-              <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
-          </div>
-        </script>
+      <footer>
+        <p>
+          Geolocation data provided by
+          <a href="https://ipwho.is" target="_blank" rel="noopener">ipwho.is</a>.
+        </p>
+      </footer>
+    </main>
 
-        <center><button id="modalBtn" type="button" class="btn btn-default" ng-click="$ctrl.open('lg')">Learn More...</button><center>
-      </div>
-
-
-  </div>
-    <footer>
-        <p>Your IP address is rendered through a cool API developed by the minds at <a href="maxminds.com"> maxminds.com </a></p>
-    </footer>
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
