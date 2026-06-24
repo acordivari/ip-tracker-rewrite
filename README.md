@@ -1,5 +1,7 @@
 # IP Tracker
 
+**Live site:** https://acordivari.github.io/ip-tracker-rewrite/
+
 A tiny single-page app that shows the geolocation metadata attached to your
 public IP address — city, region, country, coordinates, and ISP — alongside a
 short, educational write-up on how IP addresses are used to track you online.
@@ -30,3 +32,7 @@ npm run preview  # serve the production build locally
 `npm run build` produces a fully static `dist/` directory that can be hosted
 anywhere, including GitHub Pages. The Vite `base` is set to `./` so the build
 works whether it is served from a domain root or a project subpath.
+
+This repo deploys automatically: the
+[`Deploy to GitHub Pages`](.github/workflows/deploy.yml) workflow builds the
+site and publishes it on every push to `master`.
