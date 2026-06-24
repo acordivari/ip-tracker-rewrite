@@ -6,9 +6,10 @@ A tiny single-page app that shows the geolocation metadata attached to your
 public IP address — city, region, country, coordinates, and ISP — alongside a
 short, educational write-up on how IP addresses are used to track you online.
 
-Originally written in 2016 with AngularJS 1.x and Bower, it has been rebuilt
-from scratch as a dependency-free **vanilla JavaScript** app bundled with
-[Vite](https://vitejs.dev/).
+Originally written in 2016 with AngularJS 1.x and Bower
+([original repo](https://github.com/andrewdc92/ip-tracker)), it has been
+rebuilt from scratch as a dependency-free **vanilla JavaScript** app bundled
+with [Vite](https://vitejs.dev/).
 
 ## How it works
 
